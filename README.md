@@ -1,5 +1,3 @@
-# Quanteen
-A bold, Gen Z–style blog decoding Quant Finance, algorithmic trading, and investing
 # Quanteen 🧠💸
 
 Welcome to **Quanteen** – a bold, relatable, and slightly unhinged blog explaining *Quantitative Finance* to Gen Z.
