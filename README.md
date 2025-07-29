@@ -20,4 +20,5 @@ Building India’s future in AI + trading.
 📰 Blog: [Quanteen Blog] quanteen.substack.com
 📧 Contact: dhairyacodes@gmail.com
 - 📈 [Python: Mean Reversion Strategy](./mean_reversion_strategy.py)
-- 🔗 [Read: Why Wall Street Is Afraid of Teenagers](./teens-vs-wall-street.md)
+- ⚡️ [Python: Momentum Strategy](./projects/momentum_strategy.py)
+- 🔗 [Read: Why Wall Street Is Afraid of Teenagers](./teens-vs-wall-street.md
