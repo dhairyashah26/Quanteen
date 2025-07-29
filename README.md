@@ -19,4 +19,5 @@ Building India’s future in AI + trading.
 📍 Mumbai, India  
 📰 Blog: [Quanteen Blog] quanteen.substack.com
 📧 Contact: dhairyacodes@gmail.com
+- 📈 [Python: Mean Reversion Strategy](./mean_reversion_strategy.py)
 - 🔗 [Read: Why Wall Street Is Afraid of Teenagers](./teens-vs-wall-street.md)
