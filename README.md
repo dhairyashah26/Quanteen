@@ -19,3 +19,4 @@ Building India’s future in AI + trading.
 📍 Mumbai, India  
 📰 Blog: [Quanteen Blog] quanteen.substack.com
 📧 Contact: dhairyacodes@gmail.com
+- 🔗 [Read: Why Wall Street Is Afraid of Teenagers](./teens-vs-wall-street.md)
