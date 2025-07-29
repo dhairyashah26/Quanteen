@@ -21,4 +21,5 @@ Building India’s future in AI + trading.
 📧 Contact: dhairyacodes@gmail.com
 - 📈 [Python: Mean Reversion Strategy](./mean_reversion_strategy.py)
 - ⚡️ [Python: Momentum Strategy](./projects/momentum_strategy.py)
-- 🔗 [Read: Why Wall Street Is Afraid of Teenagers](./teens-vs-wall-street.md
+- 🔗 [Read: Why Wall Street Is Afraid of Teenagers](./teens-vs-wall-street.md)
+- 
