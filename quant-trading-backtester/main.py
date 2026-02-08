@@ -7,9 +7,6 @@ import importlib.util
 import sys
 from typing import Dict
 
-from backtester.engine import Backtester
-from strategies import MeanReversionStrategy, MomentumStrategy, PairsTradingStrategy
-
 
 def _ensure_dependencies() -> None:
     missing = [
@@ -31,6 +28,9 @@ def _ensure_dependencies() -> None:
 
 
 _ensure_dependencies()
+
+from backtester.engine import Backtester  # noqa: E402
+from strategies import MeanReversionStrategy, MomentumStrategy, PairsTradingStrategy  # noqa: E402
 
 import pandas as pd  # noqa: E402
 
