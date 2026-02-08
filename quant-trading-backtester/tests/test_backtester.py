@@ -37,6 +37,7 @@ def test_portfolio_metrics():
     signals = strategy.generate_signals(data)
     portfolio = Portfolio(100_000, 0.001, 0.0005, 0.02, 6, 0.2)
     result = portfolio.simulate(data["Close"], signals["signal"], signals["atr"])
-    metrics = compute_metrics(result.equity_curve, result.returns, result.positions, 0.02)
+    benchmark = pd.Series(0.0, index=result.returns.index)
+    metrics = compute_metrics(result.equity_curve, result.returns, result.positions, 0.02, benchmark)
     assert metrics.sharpe == metrics.sharpe
     assert metrics.max_dd <= 0

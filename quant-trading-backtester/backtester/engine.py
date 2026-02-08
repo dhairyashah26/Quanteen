@@ -45,6 +45,9 @@ class Backtester:
         if not self._strategies:
             raise ValueError("Add at least one strategy before running the backtest.")
 
+        benchmark = self._fetcher.fetch("SPY", timeframe, start_date, end_date)
+        benchmark_returns = benchmark["Close"].pct_change().fillna(0)
+
         if isinstance(symbol, tuple):
             data_a, data_b = tuple(map(lambda s: self._fetcher.fetch(s, timeframe, start_date, end_date), symbol))
             strategy = self._strategies[0]
@@ -60,7 +63,13 @@ class Backtester:
                 DEFAULT_CONFIG.portfolio_stop_drawdown,
             )
             result = portfolio.simulate_spread(spread_returns, signals)
-            metrics = compute_metrics(result.equity_curve, result.returns, result.positions, DEFAULT_CONFIG.risk_free_rate)
+            metrics = compute_metrics(
+                result.equity_curve,
+                result.returns,
+                result.positions,
+                DEFAULT_CONFIG.risk_free_rate,
+                benchmark_returns,
+            )
             return metrics.__dict__
 
         data = self._fetcher.fetch(symbol, timeframe, start_date, end_date)
@@ -76,5 +85,11 @@ class Backtester:
             DEFAULT_CONFIG.portfolio_stop_drawdown,
         )
         result = portfolio.simulate(data["Close"], signals, atr)
-        metrics = compute_metrics(result.equity_curve, result.returns, result.positions, DEFAULT_CONFIG.risk_free_rate)
+        metrics = compute_metrics(
+            result.equity_curve,
+            result.returns,
+            result.positions,
+            DEFAULT_CONFIG.risk_free_rate,
+            benchmark_returns.reindex(result.returns.index).fillna(0),
+        )
         return metrics.__dict__

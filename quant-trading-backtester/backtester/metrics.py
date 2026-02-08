@@ -76,10 +76,11 @@ def _sortino(returns: pd.Series, risk_free_rate: float) -> float:
     return excess.mean() / downside.std(ddof=0) * np.sqrt(252)
 
 
-def _active_share(position: pd.Series, benchmark_weight: float = 1.0) -> float:
-    if position.empty:
+def _active_share(position: pd.Series, benchmark_returns: pd.Series) -> float:
+    if position.empty or benchmark_returns.empty:
         return 0.0
     weights = position.abs().clip(0, 1)
+    benchmark_weight = (benchmark_returns != 0).astype(float).reindex(weights.index).fillna(0)
     diff = (weights - benchmark_weight).abs()
     return 0.5 * diff.mean()
 
@@ -89,6 +90,7 @@ def compute_metrics(
     returns: pd.Series,
     position: pd.Series,
     risk_free_rate: float,
+    benchmark_returns: pd.Series,
 ) -> MetricsResult:
     sharpe = _sharpe(returns, risk_free_rate)
     max_dd = _max_drawdown(equity)
@@ -98,7 +100,7 @@ def compute_metrics(
     var_95, cvar_95 = _var_cvar(returns, 0.95)
     calmar = cagr / abs(max_dd) if max_dd != 0 else 0.0
     sortino = _sortino(returns, risk_free_rate)
-    active_share = _active_share(position)
+    active_share = _active_share(position, benchmark_returns)
 
     return MetricsResult(
         sharpe=sharpe,

@@ -20,7 +20,7 @@ class DataRequest:
 
 class DataFetcher:
     def __init__(self, cache_dir: Optional[Path] = None) -> None:
-        self.cache_dir = cache_dir or Path(__file__).resolve().parent.parent / "data_cache"
+        self.cache_dir = cache_dir or Path(__file__).resolve().parent
         self.cache_dir.mkdir(parents=True, exist_ok=True)
 
     def _cache_path(self, request: DataRequest) -> Path:

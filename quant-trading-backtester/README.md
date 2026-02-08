@@ -56,7 +56,7 @@ python main.py pairs 2020-01-01 2024-01-01
 ## Features
 - Vectorized core backtesting engine
 - Multi-timeframe data (1m, 1h, 1d) with resampling
-- Smart CSV caching with split/dividend adjustment
+- Smart CSV caching with split/dividend adjustment in `data/`
 - Plotly dashboards for equity curves and signals
 - Robust handling of data gaps and delisted tickers
 
