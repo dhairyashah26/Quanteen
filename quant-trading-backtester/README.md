@@ -20,6 +20,11 @@ graph TB
 ```
 
 ## Quick Start
+> **Note:** Some sandboxed environments (e.g., Codex or restricted CI runners) block outbound
+> network access. In those environments, `pip install -r requirements.txt` may fail with
+> proxy or network errors. This project is intended to run in a normal local Python
+> environment or an unrestricted CI runner with internet access.
+
 ```bash
 pip install -r requirements.txt
 python main.py momentum AAPL 2020-01-01 2024-01-01

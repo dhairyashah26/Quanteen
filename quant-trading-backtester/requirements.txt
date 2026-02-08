@@ -4,3 +4,4 @@ yfinance
 plotly
 statsmodels
 scipy
+scikit-learn

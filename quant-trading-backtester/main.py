@@ -3,12 +3,36 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
+import sys
 from typing import Dict
-
-import pandas as pd
 
 from backtester.engine import Backtester
 from strategies import MeanReversionStrategy, MomentumStrategy, PairsTradingStrategy
+
+
+def _ensure_dependencies() -> None:
+    missing = [
+        package
+        for package in ("numpy", "pandas", "yfinance")
+        if importlib.util.find_spec(package) is None
+    ]
+    if missing:
+        missing_list = ", ".join(missing)
+        message = (
+            "Required dependencies are missing: "
+            f"{missing_list}. This can happen in sandboxed environments that block "
+            "outbound network access, which prevents `pip install -r requirements.txt` "
+            "from downloading packages. Please run this project in a local Python "
+            "environment or an unrestricted CI runner with internet access."
+        )
+        print(message, file=sys.stderr)
+        sys.exit(1)
+
+
+_ensure_dependencies()
+
+import pandas as pd  # noqa: E402
 
 
 def format_metrics(metrics: Dict[str, float]) -> str:
